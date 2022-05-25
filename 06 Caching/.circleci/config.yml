@@ -7,9 +7,9 @@ jobs:
     steps:
       - checkout
       # Uncomment below and set the key to point to the proper file
-      #- restore_cache:
-          #name: Restore Yarn Package Json Cache
-          #keys:            
+      - restore_cache:
+          name: Restore Yarn Package Json Cache
+          keys:            
       - run:
           name: Install Dependencies
           command: yarn install --immutable
