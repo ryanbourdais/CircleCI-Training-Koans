@@ -4,8 +4,7 @@ jobs:
   build:
     docker:
       - image: cimg/base:2022.03
-        environment:
-          PG_HOST: localhost
+      - image: cimg/postgres:14.0
     steps:
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command

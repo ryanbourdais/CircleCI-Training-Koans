@@ -4,6 +4,7 @@ jobs:
   test:
     docker:
       - image: cimg/base:2022.03
+    parallelism: 2
     steps:
       - checkout
       # These two tests should run in parallel. Make it so!
