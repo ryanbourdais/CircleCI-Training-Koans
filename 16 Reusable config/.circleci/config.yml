@@ -1,22 +1,27 @@
 version: 2.1
 
+executors:
+  custom-node:
+    docker:
+      - image: cimg/node:12.16
+
 commands:
   generatelogs:
     description: "A command to generate a log file"
     parameters:
       path:
         type: string
-        default: "~/randomfolder"
+        default: "~/project/"
     steps:
       - run: echo "Log file" > <<parameters.path>>/log.txt
-  endMission:
+  endmission:
     description: "Use the parameters of this command to exit this mission with a green build."
     parameters:
-      exitCode:
-        type: integer
-        default: 1
+       exitCode:
+         type: integer
+         default: 1
     steps:
-      - run: exit <<parameters.exitCode>>
+        - run: exit <<parameters.exitCode>>
 
 jobs:
   build:
@@ -31,7 +36,8 @@ jobs:
               echo "The log should exist at ~/project/log.txt after running the 'generatelogs' command"
               exit 1
             fi
-      - endMission
+      - endmission
+      
 
 workflows:
   build-workflow:

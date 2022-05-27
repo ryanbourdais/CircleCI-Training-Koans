@@ -33,3 +33,6 @@ workflows:
       - test:
           matrix:
             # Add below this line to setup matrix build
+            parameters:
+              node-version: ["12.9.1", "13.9.0", "14.18.2", "16.13.1"]
+              os: ["linux", "macos"]

@@ -13,9 +13,9 @@ jobs:
       - checkout
       - when:
           condition:
-            # Add condition to execute this step when the github branch is equal to 'main'
+             equal: [master, << pipeline.git.branch >>]
           steps:
-            - run: echo "I am on main"
+            - run: echo "I am on master"
 
   conditional-job:
     docker:
@@ -32,6 +32,6 @@ workflows:
   conditional-workflow:
     when:
       and:
-        # Add condition to execute this workflow when condition-workflow is equal to true
+        - equal: [condition-workflow, true]
     jobs:
       - conditional-job

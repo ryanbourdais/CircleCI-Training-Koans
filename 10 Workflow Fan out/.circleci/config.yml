@@ -27,12 +27,24 @@ jobs:
         - image: cimg/base:2022.03
       steps:
         - run: echo "DEPLOYING" # Make sure all tests pass first!
+      
 
 workflows:
   build-test-and-deploy:
     jobs:
       - build
-      - test-node
-      - test-node-16
-      - test-node-14
-      - deploy
+      - test-node:
+          requires:
+            - build
+      - test-node-16:
+          requires:
+            - build
+      - test-node-14:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - build
+            - test-node
+            - test-node-14
+            - test-node-16

@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - run: echo "I was run normally"
-
+      
   api-job:
     docker:
       - image: cimg/base:2022.03
@@ -29,3 +29,5 @@ workflows:
     when: << pipeline.parameters.run_by_api >> # Without modifying the config, run api-job
     jobs:
       - api-job
+
+# curl --request POST  --url "https://circleci.com/api/v2/project/gh/ryanbourdais/CircleCIKoansConfig15/pipeline" --header 'authorization: Basic <Base64 User Key>' --header 'content-type: application/json' --data '{"branch": "master", "parameters": { "run_by_api":true}}'
