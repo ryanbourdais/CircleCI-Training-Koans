@@ -10,7 +10,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Json Cache
           keys: 
-            - v1-npm-deps-{ checksum "package-lock.json" }    
+            - v1-npm-deps-{{ checksum "package-lock.json" }}    
       - run:
           name: Install Dependencies
           command: yarn install --immutable
